@@ -145,7 +145,7 @@
       function onMouseLeave() {
         if (rafId) cancelAnimationFrame(rafId);
         card.classList.remove('is-tilting');
-        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        card.style.transform = '';
         if (glare) glare.style.opacity = '0';
         bounds = null;
       }
@@ -282,6 +282,68 @@
   }
 
   /* ==========================================================================
+     6. TOOLS 1-BY-1 STAGGER ENTRANCE (Triggered on Scroll Down)
+     ========================================================================== */
+  function initToolsStagger() {
+    const toolsGrid = document.querySelector('.tools-stagger-grid');
+    if (!toolsGrid) return;
+
+    const cards = toolsGrid.querySelectorAll('.tool-item-stagger');
+    if (!cards.length) return;
+
+    if (prefersReducedMotion) {
+      cards.forEach(c => c.classList.add('is-in-view'));
+      return;
+    }
+
+    let isRevealed = false;
+    let timeouts = [];
+
+    function revealCards() {
+      if (isRevealed) return;
+      isRevealed = true;
+      timeouts.forEach(t => clearTimeout(t));
+      timeouts = [];
+
+      cards.forEach((card, index) => {
+        // Distinct 1-by-1 rhythm: 0ms, 200ms, 400ms, 600ms, 800ms
+        const delay = index * 200;
+        const timer = setTimeout(() => {
+          card.classList.add('is-in-view');
+        }, delay);
+        timeouts.push(timer);
+      });
+    }
+
+    function resetCards() {
+      if (!isRevealed) return;
+      isRevealed = false;
+      timeouts.forEach(t => clearTimeout(t));
+      timeouts = [];
+      cards.forEach(card => {
+        card.classList.remove('is-in-view');
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          revealCards();
+        } else if (entry.boundingClientRect.top > 0) {
+          // If the user scrolls back UP above the tools section, reset
+          // so next time they "go down on the website", it comes 1 by 1 again!
+          resetCards();
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.15
+    });
+
+    observer.observe(toolsGrid);
+  }
+
+  /* ==========================================================================
      INITIALIZATION DISPATCHER
      ========================================================================== */
   function init() {
@@ -290,6 +352,7 @@
     initCardTilt();
     initHeroBokeh();
     initMagneticButtons();
+    initToolsStagger();
   }
 
   if (document.readyState === 'loading') {

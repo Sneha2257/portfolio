@@ -2686,4 +2686,52 @@ button {
   transition: left 0.75s ease-in-out;
 }
 
+/* ==========================================================================
+   7. Dedicated 1-by-1 Tools Entrance Animation (Sequential Stagger Wave)
+   ========================================================================== */
+.tools-stagger-grid {
+  perspective: 1200px;
+}
+
+.tool-item-stagger {
+  opacity: 0 !important;
+  transform: translateY(60px) scale(0.88) rotateX(10deg) !important;
+  filter: blur(10px);
+  will-change: opacity, transform, filter;
+  transition: 
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.34, 1.48, 0.64, 1),
+    filter 0.7s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease !important;
+}
+
+.tool-item-stagger.is-in-view {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) rotateX(0deg) !important;
+  filter: blur(0px) !important;
+}
+
+.tool-item-stagger .ref-tool-icon-box {
+  transform: scale(0.8);
+  transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s;
+}
+
+.tool-item-stagger.is-in-view .ref-tool-icon-box {
+  transform: scale(1);
+}
+
+/* Smooth hover when card is in view and not being tilted */
+.tool-item-stagger.is-in-view:not(.is-tilting):hover {
+  transform: translateY(-8px) scale(1.025) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.12) !important;
+}
+
+/* Active 3D tilt tracking */
+.tool-item-stagger.is-in-view.is-tilting {
+  transition: none !important;
+}
+
+
 
