@@ -65,10 +65,18 @@ button {
 }
 
 .gradient-blue-purple {
-  background: var(--gradient-accent);
+  background: linear-gradient(135deg, #38bdf8 0%, #6366f1 35%, #a855f7 65%, #38bdf8 100%);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline;
+  animation: liquidGradientFlow 7s ease infinite;
+}
+
+@keyframes liquidGradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .ref-container {
@@ -2533,4 +2541,149 @@ button {
     gap: 0;
   }
 }
+
+/* ==========================================================================
+   Interactive Animation Suite Styles
+   ========================================================================== */
+
+/* 1. Scroll Reveal Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-left.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-fade-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-right.is-revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 2. 3D Card Physics Tilt & Glare */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.tilt-card.is-tilting {
+  transition: none;
+}
+
+.tilt-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+/* 3. Hero Ambient Bokeh Canvas */
+.hero-bokeh-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 4. Floating Script Flourishes & Levitation */
+.ref-tools-script-note {
+  animation: floatScriptNote 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatScriptNote {
+  0% { transform: rotate(-2.5deg) translateY(0px); }
+  100% { transform: rotate(-1.5deg) translateY(-8px); }
+}
+
+.ref-footer-script-flourish {
+  animation: floatFooterScript 7s ease-in-out infinite alternate;
+}
+
+@keyframes floatFooterScript {
+  0% { transform: rotate(-1deg) translateY(0px); }
+  100% { transform: rotate(1.5deg) translateY(-10px); }
+}
+
+.ref-portrait-note-tag {
+  animation: floatNoteTag 5s ease-in-out infinite alternate;
+}
+
+@keyframes floatNoteTag {
+  0% { transform: rotate(4deg) translateY(0); }
+  100% { transform: rotate(2deg) translateY(-6px); }
+}
+
+/* 5. Eyebrow Pulsing Bullet Glow */
+.eyebrow-bullet {
+  animation: pulseBulletGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseBulletGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+  }
+  50% {
+    transform: scale(1.35);
+    box-shadow: 0 0 16px rgba(56, 189, 248, 1);
+  }
+}
+
+/* 6. Button Shimmer Sheen */
+.ref-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.ref-btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: rotate(25deg);
+  pointer-events: none;
+}
+
+.ref-btn-primary:hover::after {
+  left: 140%;
+  transition: left 0.75s ease-in-out;
+}
+
 
