@@ -1,0 +1,392 @@
+/* ==========================================================================
+   Design Inspiration: Behance Graphic Design Portfolio 2026 Reference
+   (Dark Glassmorphism, Floating Card, Software App Badges, Studio Portrait)
+   ========================================================================== */
+
+.inspiration-section {
+  position: relative;
+  background-color: transparent;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  overflow: hidden;
+  padding: 90px 0 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  z-index: 1;
+}
+
+/* Ambient glow background layers */
+.inspiration-section::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  right: 12%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(56, 189, 248, 0.06) 40%, transparent 70%);
+  filter: blur(85px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.inspiration-section::after {
+  content: "";
+  position: absolute;
+  bottom: 20%;
+  left: 8%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  filter: blur(95px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.inspiration-stage {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  position: relative;
+  z-index: 2;
+  gap: 32px;
+}
+
+@media (min-width: 992px) {
+  .inspiration-stage {
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+}
+
+/* Floating Frosted Glass Card */
+.inspiration-card-wrap {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+}
+
+.inspiration-glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 32px;
+  padding: 44px 38px;
+  box-shadow: 0 25px 65px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  width: 100%;
+  height: 100%;
+  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .inspiration-glass-card {
+    padding: 30px 22px;
+    border-radius: 24px;
+  }
+}
+
+/* Section Title with Circled Chevron Badge */
+.card-section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  margin-bottom: 22px;
+}
+
+.circled-chevron {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(15, 23, 42, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  flex-shrink: 0;
+}
+
+.circled-chevron svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Bio Text */
+.card-bio-paragraph {
+  font-size: 0.95rem;
+  line-height: 1.68;
+  color: #334155;
+  margin-bottom: 18px;
+}
+
+.card-bio-paragraph:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Bottom Split: Softwares & Contact */
+.card-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 36px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+@media (min-width: 640px) {
+  .card-bottom-grid {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 32px;
+  }
+}
+
+.card-sub-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+/* Software App Badges */
+.software-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.software-app-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #0f172a;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.software-app-badge:hover {
+  transform: translateY(-3px);
+  background: #ffffff;
+  border-color: #059669;
+  color: #059669;
+  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.15);
+}
+
+.software-app-badge[title]::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.65rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.software-app-badge:hover::after {
+  opacity: 1;
+}
+
+/* Contact Subsection */
+.card-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-row-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-lbl {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: capitalize;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.contact-val-link {
+  font-size: 0.85rem;
+  color: #0f172a;
+  transition: color var(--transition-fast);
+  word-break: break-all;
+}
+
+.contact-val-link:hover {
+  color: #059669;
+  text-decoration: underline;
+}
+
+/* Right Column: Studio Portrait (Perfect Dual-Card Alignment with About Me) */
+.inspiration-portrait-wrap {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  width: 100%;
+}
+
+.portrait-silhouette-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  border-radius: 32px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: 0 25px 65px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.portrait-silhouette-frame::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 75%);
+  filter: blur(55px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.inspiration-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  filter: contrast(1.06) brightness(0.98) saturate(0.95);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portrait-silhouette-frame:hover .inspiration-portrait-img {
+  transform: scale(1.03);
+}
+
+.portrait-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 42%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 45%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.portrait-card-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 9999px;
+  color: #0f172a;
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.portrait-card-badge .badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #059669;
+  box-shadow: 0 0 8px #059669;
+}
+
+/* Bottom Bold Display Wordmark: 3D PORTFOLIO */
+.inspiration-bottom-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  margin-top: 50px;
+  line-height: 0.85;
+  user-select: none;
+  pointer-events: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.bottom-marquee-text {
+  font-family: var(--font-sans);
+  font-size: clamp(3.8rem, 13vw, 11rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: #059669;
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #0d9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 15px 30px rgba(5, 150, 105, 0.22));
+  display: block;
+  transform: translateY(18%);
+  white-space: nowrap;
+  text-align: center;
+}

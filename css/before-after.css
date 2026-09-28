@@ -1,0 +1,271 @@
+/* ==========================================================================
+   Before / After Section (Adri Luxury Makeover Comparison)
+   ========================================================================== */
+
+.before-after-section {
+  padding: 110px 0;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.ba-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 50px;
+}
+
+.ba-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.ba-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.ba-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.ba-container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  aspect-ratio: 16 / 10;
+  margin: 0 auto;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-subtle);
+  background: #0f1322;
+  user-select: none;
+}
+
+.ba-badge {
+  position: absolute;
+  top: 20px;
+  z-index: 10;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ba-badge-before {
+  left: 20px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+}
+
+.ba-badge-after {
+  right: 20px;
+  background: rgba(5, 150, 105, 0.15);
+  border: 1px solid rgba(5, 150, 105, 0.35);
+  color: #10b981;
+}
+
+.ba-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ba-after-layer {
+  background: #0e1220;
+  color: #ffffff;
+}
+
+.ba-before-layer {
+  background: #fbfaf8;
+  color: #1b1b1e;
+  width: 50%;
+  border-right: 2px solid var(--accent-terracotta);
+  z-index: 5;
+}
+
+.after-content-wrap {
+  padding: 70px 40px 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.after-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #93c5fd;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.after-title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.after-takeaway {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.after-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.after-kpi-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.after-kpi-num {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.after-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  margin-bottom: 4px;
+}
+
+.after-kpi-desc {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.after-pillar-strip {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+}
+
+.after-pillar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.after-pillar-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+}
+
+.before-content-wrap {
+  width: 960px;
+  padding: 70px 40px 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.before-title-raw {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.before-subtitle-raw {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.before-bullets-raw {
+  font-size: 0.88rem;
+  color: #374151;
+  line-height: 1.6;
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.before-flaws-strip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #dc2626;
+  background: #fee2e2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #fca5a5;
+}
+
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  z-index: 15;
+  cursor: ew-resize;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent-terracotta);
+  color: var(--accent-terracotta-dark);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 2px solid #ffffff;
+}
+
+.ba-helper-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
