@@ -282,14 +282,17 @@
   }
 
   /* ==========================================================================
-     6. TOOLS 1-BY-1 STAGGER ENTRANCE (Triggered on Scroll Down)
+     6. ADOBE-STYLE TOOLS 1-BY-1 STAGGER ENTRANCE & CATEGORY FILTERING
      ========================================================================== */
   function initToolsStagger() {
     const toolsGrid = document.querySelector('.tools-stagger-grid');
     if (!toolsGrid) return;
 
-    const cards = toolsGrid.querySelectorAll('.tool-item-stagger');
+    const cards = Array.from(toolsGrid.querySelectorAll('.tool-item-stagger'));
     if (!cards.length) return;
+
+    const filterPills = document.querySelectorAll('.adobe-filter-pill');
+    let currentFilter = 'all';
 
     if (prefersReducedMotion) {
       cards.forEach(c => c.classList.add('is-in-view'));
@@ -299,19 +302,17 @@
     let isRevealed = false;
     let timeouts = [];
 
-    function revealCards() {
-      if (isRevealed) return;
-      isRevealed = true;
+    function revealActiveCards() {
       timeouts.forEach(t => clearTimeout(t));
       timeouts = [];
 
-      cards.forEach((card, index) => {
-        // Distinct 1-by-1 rhythm: 0ms, 200ms, 400ms, 600ms, 800ms
-        const delay = index * 200;
-        const timer = setTimeout(() => {
+      const activeCards = cards.filter(c => !c.classList.contains('is-filtered-out'));
+      activeCards.forEach((card, index) => {
+        card.style.transitionDelay = `${(index * 0.12).toFixed(2)}s`;
+        // Request animation frame to ensure delay is applied before class addition
+        requestAnimationFrame(() => {
           card.classList.add('is-in-view');
-        }, delay);
-        timeouts.push(timer);
+        });
       });
     }
 
@@ -321,26 +322,59 @@
       timeouts.forEach(t => clearTimeout(t));
       timeouts = [];
       cards.forEach(card => {
+        card.style.transitionDelay = '';
         card.classList.remove('is-in-view');
       });
     }
 
+    // Scroll Observer for 1-by-1 entrance
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          revealCards();
-        } else if (entry.boundingClientRect.top > 0) {
-          // If the user scrolls back UP above the tools section, reset
-          // so next time they "go down on the website", it comes 1 by 1 again!
+          if (!isRevealed) {
+            isRevealed = true;
+            revealActiveCards();
+          }
+        } else if (entry.boundingClientRect.top > (window.innerHeight || document.documentElement.clientHeight)) {
+          // User scrolled back UP above the tools section -> reset so next downward scroll plays 1-by-1
           resetCards();
         }
       });
     }, {
       rootMargin: '0px 0px -40px 0px',
-      threshold: 0.15
+      threshold: 0.1
     });
 
     observer.observe(toolsGrid);
+
+    // Interactive Adobe Category Pill Filters
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const filter = pill.getAttribute('data-filter') || 'all';
+        if (filter === currentFilter) return;
+
+        currentFilter = filter;
+        filterPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        // Apply filter state to cards
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          card.classList.remove('is-in-view');
+          
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('is-filtered-out');
+          } else {
+            card.classList.add('is-filtered-out');
+          }
+        });
+
+        // Trigger fresh sequential 1-by-1 reveal for matching cards
+        setTimeout(() => {
+          revealActiveCards();
+        }, 50);
+      });
+    });
   }
 
   /* ==========================================================================
