@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Kumari Sneha — Presentation Specialist Portfolio Data
  * Authentic deck case studies, slide contents, before/after comparisons, and metadata.
  */
@@ -34,6 +34,97 @@ export const portfolioData = {
   ],
 
   projects: [
+    {
+      id: "tata-ai-roundtable",
+      number: "01",
+      title: "Tata Communications: Built for Speed. Ready for AI.",
+      shortTitle: "Tata Communications AI Roundtable",
+      client: "Tata Communications • Austin Executive Roundtable",
+      category: "enterprise",
+      categoryLabel: "Executive Presentations & AI",
+      featured: true,
+      tagline: "High-Stakes Leadership Roundtable on Infrastructure, F1 Telemetry, and Scaling Enterprise AI",
+      description: "An executive presentation deck moderated by Amitabh Kotwal (VP Solutions Engineer & Customer Success) for Tata Communications. Connects Formula 1 real-time telemetry speed and visibility with enterprise infrastructure readiness for AI at scale.",
+      impactMetrics: [
+        { label: "Executive Audience", value: "C-Suite / VPs" },
+        { label: "Strategic Anchor", value: "F1 Telemetry" },
+        { label: "Enterprise Focus", value: "AI at Scale" }
+      ],
+      tools: ["Microsoft PowerPoint", "Executive Storytelling", "Adobe Illustrator"],
+      cardGradient: "linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(0, 114, 206, 0.35))",
+      accentColor: "#0072ce",
+      accentGlow: "rgba(0, 114, 206, 0.35)",
+      previewImage: "assets/work/tata_deck_cover.png",
+      pdfUrl: "assets/work/Tata_RT_Slides_Austin_2026.pdf",
+      slides: [
+        {
+          slideNumber: "01",
+          slideTitle: "Built for Speed. Ready for AI. (Austin Roundtable)",
+          subtitle: "TATA COMMUNICATIONS // EXECUTIVE ROUNDTABLE",
+          image: "assets/work/tata_deck_slide_1.png",
+          content: {
+            headline: "Moderated by Amitabh Kotwal, VP Solutions Engineer & Customer Success, Tata Communications.",
+            visualType: "image"
+          }
+        },
+        {
+          slideNumber: "02",
+          slideTitle: "Where Complexity Creates Drag",
+          subtitle: "ORGANIZATIONAL BOTTLENECKS",
+          image: "assets/work/tata_deck_slide_2.png",
+          content: {
+            headline: "Where is complexity creating the most drag on your organization today?",
+            visualType: "image"
+          }
+        },
+        {
+          slideNumber: "03",
+          slideTitle: "The Evolving Role of AI Over 3 Years",
+          subtitle: "STRATEGIC HORIZON",
+          image: "assets/work/tata_deck_slide_3.png",
+          content: {
+            headline: "What role is AI playing in your organization today, and how do you see that evolving over the next three years?",
+            visualType: "image"
+          }
+        },
+        {
+          slideNumber: "04",
+          slideTitle: "Moving Beyond AI Pilots to Scale",
+          subtitle: "EXECUTION & VELOCITY",
+          image: "assets/work/tata_deck_slide_4.png",
+          content: {
+            headline: "For those already moving beyond AI pilots, what changed once you started trying to scale?",
+            visualType: "image"
+          }
+        },
+        {
+          slideNumber: "05",
+          slideTitle: "F1 Telemetry & Real-Time Infrastructure Visibility",
+          subtitle: "CRITICAL DECISION-MAKING",
+          image: "assets/work/tata_deck_slide_5.png",
+          content: {
+            headline: "In F1, visibility into performance is critical to making decisions in real time. How much visibility do you have across your own infrastructure?",
+            visualType: "image"
+          }
+        },
+        {
+          slideNumber: "06",
+          slideTitle: "The One Change to Prepare for AI at Scale",
+          subtitle: "NETWORK FOUNDATION",
+          image: "assets/work/tata_deck_slide_6.png",
+          content: {
+            headline: "If you could make one change to your network foundation today to improve performance and prepare for AI at scale, what would it be?",
+            visualType: "image"
+          }
+        }
+      ],
+      caseStudy: {
+        background: "Tata Communications hosted a high-level executive leadership roundtable in Austin, Texas on 'Built for Speed. Ready for AI' bringing together enterprise technology leaders, CTOs, and VP-level executives.",
+        challenge: "The deck needed to facilitate a dynamic executive conversation rather than a one-way lecture, drawing striking analogies between Formula 1 split-second telemetry and enterprise AI infrastructure bottlenecks.",
+        solution: "Sneha crafted a sleek, ultra-focused executive slide system with high-contrast typography, bold question framing, clean brand compliance, and cinematic slide pacing designed to spark boardroom engagement.",
+        outcome: "Used live by VP Amitabh Kotwal to moderate the executive session in Austin, earning high praise for engaging visual clarity and pacing."
+      }
+    },
     {
       id: "ai-finance",
       number: "01",

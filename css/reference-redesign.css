@@ -2735,3 +2735,84 @@ button {
 
 
 
+
+
+/* ==========================================================================
+   Selected Projects & Activities (5-Card Showcase & Stagger Animation)
+   ========================================================================== */
+.ref-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.ref-card-dl-quick {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+}
+
+.ref-card-dl-quick:hover {
+  background: #059669;
+  border-color: #059669;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.45);
+}
+
+/* Projects 1-by-1 Sequential Stagger Animation */
+.project-item-stagger {
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease;
+  will-change: transform, opacity;
+}
+
+.project-item-stagger.is-in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.project-item-stagger.is-in-view:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Background orbits for Projects */
+.orbit-projects-left {
+  top: 15%;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+}
+
+.orbit-projects-right {
+  bottom: 8%;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+}

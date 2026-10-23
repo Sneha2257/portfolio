@@ -346,7 +346,68 @@
   /* ==========================================================================
      INITIALIZATION DISPATCHER
      ========================================================================== */
+  
+  /* ==========================================================================
+     7. PROJECTS 1-BY-1 STAGGER ENTRANCE (Triggered on Scroll Down)
+     ========================================================================== */
+  function initProjectsStagger() {
+    const projectsGrid = document.querySelector('.projects-stagger-grid');
+    if (!projectsGrid) return;
+
+    const cards = projectsGrid.querySelectorAll('.project-item-stagger');
+    if (!cards.length) return;
+
+    if (prefersReducedMotion) {
+      cards.forEach(c => c.classList.add('is-in-view'));
+      return;
+    }
+
+    let isRevealed = false;
+    let timeouts = [];
+
+    function revealCards() {
+      if (isRevealed) return;
+      isRevealed = true;
+      timeouts.forEach(t => clearTimeout(t));
+      timeouts = [];
+
+      cards.forEach((card, index) => {
+        const delay = index * 160;
+        const timer = setTimeout(() => {
+          card.classList.add('is-in-view');
+        }, delay);
+        timeouts.push(timer);
+      });
+    }
+
+    function resetCards() {
+      if (!isRevealed) return;
+      isRevealed = false;
+      timeouts.forEach(t => clearTimeout(t));
+      timeouts = [];
+      cards.forEach(card => {
+        card.classList.remove('is-in-view');
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          revealCards();
+        } else if (entry.boundingClientRect.top > 0) {
+          resetCards();
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.12
+    });
+
+    observer.observe(projectsGrid);
+  }
+
   function init() {
+    initProjectsStagger();
     initCounters();
     initScrollReveal();
     initCardTilt();

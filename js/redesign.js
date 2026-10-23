@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Category Filter Tabs for Reference Work Grid
   const filterBtns = document.querySelectorAll('.ref-filter-btn');
-  const gridCards = document.querySelectorAll('.ref-grid-card');
+  const gridCards = document.querySelectorAll('.ref-featured-card, .ref-grid-card');
 
   if (filterBtns.length > 0 && gridCards.length > 0) {
     filterBtns.forEach(btn => {
